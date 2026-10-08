@@ -44,7 +44,7 @@ class VolService : Service() {
             .build()
         startForeground(1, n)
         registerReceiver(receiver, IntentFilter().apply {
-            addAction(Intent.ACTION_USER_PRESENT
+            addAction(Intent.ACTION_USER_PRESENT)
             addAction(Intent.ACTION_SCREEN_OFF)
         })
     }
