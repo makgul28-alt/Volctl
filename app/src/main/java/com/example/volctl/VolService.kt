@@ -18,7 +18,7 @@ class VolService : Service() {
             val am = c.getSystemService(AudioManager::class.java)
             try {
                 when (i.action) {
-                    Intent.ACTION_SCREEN_ON -> {
+                    Intent.ACTION_USER_PRESENT -> {
                         if (saved < 0) saved = am.getStreamVolume(AudioManager.STREAM_NOTIFICATION)
                         am.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 1, 0)
                     }
@@ -44,7 +44,7 @@ class VolService : Service() {
             .build()
         startForeground(1, n)
         registerReceiver(receiver, IntentFilter().apply {
-            addAction(Intent.ACTION_SCREEN_ON)
+            addAction(Intent.ACTION_USER_PRESENT
             addAction(Intent.ACTION_SCREEN_OFF)
         })
     }
